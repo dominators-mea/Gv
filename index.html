@@ -34,6 +34,8 @@
       font-weight: bold;
       border-radius: 8px;
       transition: 0.3s;
+      cursor: pointer;
+      border: none;
     }
     .btn.disabled {
       background: #444;
@@ -57,7 +59,7 @@
     
     <div class="timer" id="timer">Please wait: 15s</div>
     
-    <a href="📁 TurboClean_xo.ipa" download="📁 TurboClean_xo.ipa" id="downloadBtn" class="btn disabled">Download Now</a>
+    <button id="downloadBtn" class="btn disabled">Download Now</button>
   </div>
 
   <!-- BANNER AD BOTTOM -->
@@ -69,6 +71,7 @@
     let timeLeft = 15;
     const timerEl = document.getElementById("timer");
     const btnEl = document.getElementById("downloadBtn");
+    const downloadLink = "📁 TurboClean_xo.ipa";
 
     const countdown = setInterval(() => {
       timeLeft--;
@@ -80,9 +83,16 @@
         btnEl.classList.remove("disabled");
       }
     }, 1000);
+
+    // Only trigger download + popunder when button is clicked
+    btnEl.addEventListener("click", function() {
+      if (timeLeft <= 0) {
+        window.location.href = downloadLink;
+      }
+    });
   </script>
 
-  <!-- POPUNDER AD CODE -->
+  <!-- POPUNDER AD CODE - keep this at bottom -->
   <script src="https://pl29526455.effectivecpmnetwork.com/58/05/56/58055653b97b5e7459c379b365eb1d4d.js"></script>
 
 </body>
