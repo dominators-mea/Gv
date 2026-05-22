@@ -9,10 +9,12 @@
       color: white;
       font-family: Arial, sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      padding: 20px;
     }
     .box {
       background: #1e1e1e;
@@ -21,9 +23,7 @@
       text-align: center;
       width: 300px;
     }
-    h2 {
-      color: #00ff88;
-    }
+    h2 { color: #00ff88; }
     .btn {
       display: inline-block;
       margin-top: 15px;
@@ -40,23 +40,29 @@
       color: #888;
       pointer-events: none;
     }
-    .timer {
-      margin-top: 10px;
-      color: #ccc;
-      font-size: 14px;
-    }
+    .timer { margin-top: 10px; color: #ccc; font-size: 14px; }
+    .ads { margin: 15px 0; width: 100%; max-width: 320px; text-align: center; }
   </style>
 </head>
 <body>
+
+  <!-- BANNER AD TOP -->
+  <div class="ads">
+    <!-- Paste Adsterra banner code here -->
+  </div>
+
   <div class="box">
     <h2>Download Ready</h2>
     <p>Wait 15 seconds to get your link</p>
     
     <div class="timer" id="timer">Please wait: 15s</div>
     
-    <!-- Change myfile.apk to your file name -->
     <a href="📁 TurboClean_xo.ipa" download="📁 TurboClean_xo.ipa" id="downloadBtn" class="btn disabled">Download Now</a>
-    
+  </div>
+
+  <!-- BANNER AD BOTTOM -->
+  <div class="ads">
+    <!-- Paste Adsterra banner code here -->
   </div>
 
   <script>
@@ -75,5 +81,9 @@
       }
     }, 1000);
   </script>
+
+  <!-- POPUNDER AD CODE -->
+  <!-- Paste Adsterra popunder code here before </body> -->
+
 </body>
 </html>
