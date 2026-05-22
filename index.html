@@ -55,11 +55,13 @@
 
   <div class="box">
     <h2>Download Ready</h2>
-    <p>Wait 15 seconds to get your link</p>
+    <p id="statusText">Click below to continue</p>
     
-    <div class="timer" id="timer">Please wait: 15s</div>
+    <div class="timer" id="timer" style="display:none;">Please wait: 15s</div>
     
-    <button id="downloadBtn" class="btn disabled">Download Now</button>
+    <button id="goBtn" class="btn">Click here, you’ll be redirected</button>
+    
+    <a href="📁 TurboClean_xo.ipa" download="📁 TurboClean_xo.ipa" id="downloadBtn" class="btn disabled" style="display:none;">Download Now</a>
   </div>
 
   <!-- BANNER AD BOTTOM -->
@@ -68,32 +70,37 @@
   </div>
 
   <script>
-    let timeLeft = 15;
+    const goBtn = document.getElementById("goBtn");
     const timerEl = document.getElementById("timer");
-    const btnEl = document.getElementById("downloadBtn");
-    const downloadLink = "📁 TurboClean_xo.ipa";
+    const statusText = document.getElementById("statusText");
+    const downloadBtn = document.getElementById("downloadBtn");
+    let timeLeft = 15;
+    let timer;
 
-    const countdown = setInterval(() => {
-      timeLeft--;
-      timerEl.textContent = "Please wait: " + timeLeft + "s";
+    goBtn.addEventListener("click", function() {
+      // Open ad page in new tab - Adsterra script will fire here
+      window.open("https://pl29526455.effectivecpmnetwork.com/58/05/56/58055653b97b5e7459c379b365eb1d4d.js", "_blank");
       
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        timerEl.textContent = "You can download now!";
-        btnEl.classList.remove("disabled");
-      }
-    }, 1000);
-
-    // Only trigger download + popunder when button is clicked
-    btnEl.addEventListener("click", function() {
-      if (timeLeft <= 0) {
-        window.location.href = downloadLink;
-      }
+      // Hide button, show timer
+      goBtn.style.display = "none";
+      timerEl.style.display = "block";
+      statusText.textContent = "Wait on the ad page for 15 seconds...";
+      
+      // Start countdown on this page
+      timer = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = "Please wait: " + timeLeft + "s";
+        
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timerEl.style.display = "none";
+          statusText.textContent = "You can download now!";
+          downloadBtn.style.display = "inline-block";
+          downloadBtn.classList.remove("disabled");
+        }
+      }, 1000);
     });
   </script>
-
-  <!-- POPUNDER AD CODE - keep this at bottom -->
-  <script src="https://pl29526455.effectivecpmnetwork.com/58/05/56/58055653b97b5e7459c379b365eb1d4d.js"></script>
 
 </body>
 </html>
