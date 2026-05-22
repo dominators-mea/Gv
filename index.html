@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download File</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+    h2 {
+      color: #00ff88;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: #00ff88;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn.disabled {
+      background: #444;
+      color: #888;
+      pointer-events: none;
+    }
+    .timer {
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Download Ready</h2>
+    <p>Wait 15 seconds to get your link</p>
+    
+    <div class="timer" id="timer">Please wait: 15s</div>
+    
+    <!-- Change myfile.apk to your file name -->
+    <a href="📁 TurboClean_xo.ipa" download="📁 TurboClean_xo.ipa" id="downloadBtn" class="btn disabled">Download Now</a>
+    
+  </div>
+
+  <script>
+    let timeLeft = 15;
+    const timerEl = document.getElementById("timer");
+    const btnEl = document.getElementById("downloadBtn");
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerEl.textContent = "Please wait: " + timeLeft + "s";
+      
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerEl.textContent = "You can download now!";
+        btnEl.classList.remove("disabled");
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
