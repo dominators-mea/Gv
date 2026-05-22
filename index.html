@@ -78,15 +78,18 @@
     let timer;
 
     goBtn.addEventListener("click", function() {
-      // Open ad page in new tab - Adsterra script will fire here
-      window.open("https://pl29526455.effectivecpmnetwork.com/58/05/56/58055653b97b5e7459c379b365eb1d4d.js", "_blank");
+      // Load Adsterra popunder script properly
+      let adScript = document.createElement("script");
+      adScript.src = "//pl29526455.effectivecpmnetwork.com/58/05/56/58055653b97b5e7459c379b365eb1d4d.js";
+      adScript.type = "text/javascript";
+      document.body.appendChild(adScript);
       
       // Hide button, show timer
       goBtn.style.display = "none";
       timerEl.style.display = "block";
-      statusText.textContent = "Wait on the ad page for 15 seconds...";
+      statusText.textContent = "Wait 15 seconds...";
       
-      // Start countdown on this page
+      // Start countdown
       timer = setInterval(() => {
         timeLeft--;
         timerEl.textContent = "Please wait: " + timeLeft + "s";
